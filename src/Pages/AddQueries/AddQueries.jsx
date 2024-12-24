@@ -23,7 +23,7 @@ const AddQueries = () => {
         const query = form.query.value;
         const authorImg = user.photoURL;
         const authorName = user.displayName;
-        const postedTime = Date.now()
+        const postedTime = Date.now();
         const authorEmail = user.email;
 
         const productQuery = { productName, brandName, imageURL, queryTitle, boycott, query, authorImg, authorName, postedTime, authorEmail }
@@ -60,7 +60,7 @@ const AddQueries = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+        <div className=" py-5 bg-gray-100 flex justify-center items-center">
             <div className="card w-full max-w-3xl bg-white shadow-md rounded-lg p-6">
                 <h1 className="text-3xl font-bold text-center text-primary mb-6">
                     Add Your Query
@@ -156,7 +156,7 @@ const AddQueries = () => {
                             <span className="label-text text-gray-700">Your Query</span>
                         </label>
                         <textarea
-                            placeholder="Write your query here..."
+                            placeholder="Write your query in details here..."
                             name="query"
                             className="textarea textarea-bordered w-full"
                             rows="5"

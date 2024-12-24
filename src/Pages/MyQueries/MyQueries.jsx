@@ -11,16 +11,16 @@ const MyQueries = () => {
     const { user } = useAuth()
 
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get(`http://localhost:3000/queries?authorEmail=${user.email}`)
-        .then(res =>{
-            const data = res.data;
-            setMyQueries(data);
-            console.log(data);
-        })
-    },[user.email])
+            .then(res => {
+                const data = res.data;
+                setMyQueries(data);
+                console.log(data);
+            })
+    }, [user.email])
     return (
-        <div className="w-11/12 mx-auto">
+        <div className="w-11/12 mx-auto mb-12">
             <div className="hero bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-5 mb-5 rounded-lg">
                 <div className="hero-content text-center">
                     <div className="max-w-2xl">
@@ -55,7 +55,7 @@ const MyQueries = () => {
                                 myQueries.map(query =>
                                     <div
                                         key={query._id}
-                                        className="card card-compact bg-base-100 shadow-xl">
+                                        className="card card-compact bg-base-100 shadow">
                                         <figure>
                                             <img
                                                 src={query.imageURL}
@@ -73,8 +73,12 @@ const MyQueries = () => {
                                                     <p className="flex items-center gap-2"><IoTime /> {new Date(query.postedTime).toLocaleString()}</p>
                                                 </div>
                                             </div>
-                                            <div className="card-actions justify-end">
-                                                <button className="btn btn-primary">Buy Now</button>
+                                            <div className="card-actions">
+                                                <Link to={`/queryDetails/${query._id}`}>
+                                                    <button className=" py-2 px-3 border rounded-lg shadow">View Details</button>
+                                                </Link>
+                                                <button className=" py-2 px-3 border rounded-lg shadow ">Update</button>
+                                                <button className=" py-2 px-3 border rounded-lg shadow ">Delete</button>
                                             </div>
                                         </div>
                                     </div>)
