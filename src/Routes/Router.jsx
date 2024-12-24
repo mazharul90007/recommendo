@@ -6,6 +6,9 @@ import Signin from "../Pages/SignIn/Signin";
 import Registration from "../Pages/Registration/Registration";
 import RecommendationForMe from "../Pages/RecommendationForMe/RecommendationForMe";
 import PrivateRoute from "./PrivateRoute";
+import AddQueries from "../Pages/AddQueries/AddQueries";
+import MyQueries from "../Pages/MyQueries/MyQueries";
+import Queries from "../Pages/Queries/Queries";
 
 
 
@@ -31,6 +34,19 @@ const router = createBrowserRouter([
             path: '/recommendationForMe',
             element: <PrivateRoute><RecommendationForMe></RecommendationForMe></PrivateRoute>
 
+        },
+        {
+          path: '/addQueries',
+          element: <PrivateRoute><AddQueries></AddQueries></PrivateRoute>
+        },
+        {
+          path: '/queries',
+          element: <PrivateRoute><Queries></Queries></PrivateRoute>,
+          loader: ()=> fetch('http://localhost:3000/queries')
+        },
+        {
+          path: '/myQueries',
+          element: <PrivateRoute><MyQueries></MyQueries></PrivateRoute>,
         }
       ]
     },
