@@ -4,6 +4,8 @@ import { TbWorldWww } from "react-icons/tb";
 import { PiSubtitles } from "react-icons/pi";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const QueryDetails = () => {
@@ -26,6 +28,7 @@ const QueryDetails = () => {
         const recommendationReason = form.recommendationReason.value;
         const queryId = query._id;
         const queryTitle = query.queryTitle;
+        const queryImage = query.imageURL;
         const productName = query.productName;
         const userName = query.authorName;
         const userEmail = query.authorEmail;
@@ -33,9 +36,24 @@ const QueryDetails = () => {
         const recommenderName = user.displayName;
         const recommendTime = Date.now();
 
-        const recommendation = {recommendTitle, recommendedProductName, recommendedImageURL, recommendationReason, queryId, queryTitle, productName, userName, userEmail, recommenderEmail, recommenderName, recommendTime}
+        const recommendation = {recommendTitle, recommendedProductName, recommendedImageURL, recommendationReason, queryId, queryTitle, queryImage, productName, userName, userEmail, recommenderEmail, recommenderName, recommendTime}
 
         console.log(recommendation);
+
+        axios.post('http://localhost:3000/recommendation', recommendation)
+        .then(res => {
+            const data = res.data;
+            if (data.insertedId) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Recommendation has been Added Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                // navigate('/myQueries')
+            }
+        })
 
     }
     return (

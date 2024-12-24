@@ -10,52 +10,60 @@ import AddQueries from "../Pages/AddQueries/AddQueries";
 import MyQueries from "../Pages/MyQueries/MyQueries";
 import Queries from "../Pages/Queries/Queries";
 import QueryDetails from "../Pages/QueryDetails/QueryDetails";
+import RecommendationForMeDetails from "../Pages/RecommendationForMeDetails/RecommendationForMeDetails";
 
 
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout></MainLayout>,
-      errorElement: <Error></Error>,
-      children: [
-        {
-            path: '/',
-            element: <Home></Home>
-        },
-        {
-            path: '/signin',
-            element: <Signin></Signin>
-        },
-        {
-            path: '/registration',
-            element: <Registration></Registration>
-        },
-        {
-            path: '/recommendationForMe',
-            element: <PrivateRoute><RecommendationForMe></RecommendationForMe></PrivateRoute>
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    errorElement: <Error></Error>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>
+      },
+      {
+        path: '/signin',
+        element: <Signin></Signin>
+      },
+      {
+        path: '/registration',
+        element: <Registration></Registration>
+      },
+      {
+        path: '/recommendationForMe',
+        element: <PrivateRoute><RecommendationForMe></RecommendationForMe></PrivateRoute>
 
-        },
-        {
-          path: '/addQueries',
-          element: <PrivateRoute><AddQueries></AddQueries></PrivateRoute>
-        },
-        {
-          path: '/queries',
-          element: <PrivateRoute><Queries></Queries></PrivateRoute>,
-          loader: ()=> fetch('http://localhost:3000/queries')
-        },
-        {
-          path: '/myQueries',
-          element: <PrivateRoute><MyQueries></MyQueries></PrivateRoute>,
-        },
-        {
-          path: '/queryDetails/:id',
-          element: <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>,
-          loader: ({params})=> fetch(`http://localhost:3000/queries/${params.id}`)
-        }
-      ]
-    },
-  ]);
+      },
+      {
+        path: '/addQueries',
+        element: <PrivateRoute><AddQueries></AddQueries></PrivateRoute>
+      },
+      {
+        path: '/queries',
+        element: <PrivateRoute><Queries></Queries></PrivateRoute>,
+        loader: () => fetch('http://localhost:3000/queries')
+      },
+      {
+        path: '/myQueries',
+        element: <PrivateRoute><MyQueries></MyQueries></PrivateRoute>,
+      },
+      {
+        path: '/queryDetails/:id',
+        element: <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:3000/queries/${params.id}`)
+      },
+      {
+        path: '/recommendationForMe/:id',
+        element: <PrivateRoute>
+          <RecommendationForMeDetails></RecommendationForMeDetails>
+        </PrivateRoute>,
+        loader: ({params})=>fetch(`http://localhost:3000/recommendationForMe/${params.id}`)
+      }
+    ]
+  },
+]);
 
-  export default router
+export default router
