@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
-// import { MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 
@@ -52,7 +52,7 @@ const RecommendationForMe = () => {
                                             <Link to={`/recommendationForMe/${recommendation._id}`}>
                                                 <button className="py-1 px-2 border border-green-500 rounded-md shadow">Details</button>
                                             </Link>
-                                            {/* <button className=" text-xl text-red-500 py-1 px-2 border border-red-500 rounded-md shadow"><MdDelete /></button> */}
+                                            <button className=" text-xl text-red-500 py-1 px-2 border border-red-500 rounded-md shadow"><MdDelete /></button>
                                         </div>
                                     </td>
                                 </tr>)
