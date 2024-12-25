@@ -17,13 +17,17 @@ const Navbar = () => {
     }
 
     const links = <>
-        <NavLink to={'/'}><li>Home</li></NavLink>
-        <NavLink to={'/queries'}><li>Queries</li></NavLink>
+        <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/'}><li>Home</li></NavLink>
+
+        <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/queries'}><li>Queries</li></NavLink>
+
         {
             user?.email && <>
-                <NavLink to={'/myQueries'}><li>My Queries</li></NavLink>
-                <NavLink to={'/recommendationForMe'}><li>Recommendation For Me</li></NavLink>
-                <NavLink to={'/myRecommendation'}><li>My Recommendation</li></NavLink>
+                <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/myQueries'}><li>My Queries</li></NavLink>
+
+                <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/recommendationForMe'}><li>Recommendation For Me</li></NavLink>
+                
+                <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/myRecommendation'}><li>My Recommendation</li></NavLink>
             </>
         }
     </>
