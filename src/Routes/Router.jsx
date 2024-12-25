@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:3000/queries')
+        loader: () => fetch('https://recommendo-server.vercel.app/queries')
       },
       {
         path: '/signin',
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: '/queries',
         element: <PrivateRoute><Queries></Queries></PrivateRoute>,
-        loader: () => fetch('http://localhost:3000/queries')
+        loader: () => fetch('https://recommendo-server.vercel.app/queries')
       },
       {
         path: '/myQueries',
@@ -61,26 +61,26 @@ const router = createBrowserRouter([
       {
         path: '/queryDetails/:id',
         element: <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:3000/queries/${params.id}`)
+        loader: ({ params }) => fetch(`https://recommendo-server.vercel.app/queries/${params.id}`)
       },
       {
         path: '/updateQuery/:id',
         element: <PrivateRoute><UpdateQuery></UpdateQuery></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:3000/queries/${params.id}`)
+        loader: ({ params }) => fetch(`https://recommendo-server.vercel.app/queries/${params.id}`)
       },
       {
         path: '/recommendationForMe/:id',
         element: <PrivateRoute>
           <RecommendationForMeDetails></RecommendationForMeDetails>
         </PrivateRoute>,
-        loader: ({params})=>fetch(`http://localhost:3000/recommendationForMe/${params.id}`)
+        loader: ({params})=>fetch(`https://recommendo-server.vercel.app/recommendationForMe/${params.id}`)
       },
       {
         path: '/myRecommendation/:id',
         element: <PrivateRoute>
           <MyRecommendationDetails></MyRecommendationDetails>
         </PrivateRoute>,
-        loader: ({params})=>fetch(`http://localhost:3000/myRecommendation/${params.id}`)
+        loader: ({params})=>fetch(`https://recommendo-server.vercel.app/myRecommendation/${params.id}`)
       },
     ]
   },
