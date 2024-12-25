@@ -11,6 +11,8 @@ import MyQueries from "../Pages/MyQueries/MyQueries";
 import Queries from "../Pages/Queries/Queries";
 import QueryDetails from "../Pages/QueryDetails/QueryDetails";
 import RecommendationForMeDetails from "../Pages/RecommendationForMeDetails/RecommendationForMeDetails";
+import MyRecommendation from "../Pages/MyRecommendation/MyRecommendation";
+import MyRecommendationDetails from "../Pages/MyRecommendationDetails/MyRecommendationDetails";
 
 
 
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
 
       },
       {
+        path:'/myRecommendation',
+        element: <PrivateRoute><MyRecommendation></MyRecommendation></PrivateRoute>
+      },
+      {
         path: '/addQueries',
         element: <PrivateRoute><AddQueries></AddQueries></PrivateRoute>
       },
@@ -61,7 +67,14 @@ const router = createBrowserRouter([
           <RecommendationForMeDetails></RecommendationForMeDetails>
         </PrivateRoute>,
         loader: ({params})=>fetch(`http://localhost:3000/recommendationForMe/${params.id}`)
-      }
+      },
+      {
+        path: '/myRecommendation/:id',
+        element: <PrivateRoute>
+          <MyRecommendationDetails></MyRecommendationDetails>
+        </PrivateRoute>,
+        loader: ({params})=>fetch(`http://localhost:3000/myRecommendation/${params.id}`)
+      },
     ]
   },
 ]);

@@ -6,14 +6,12 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import nodata from '../../assets/noData.png'
 
-
-
-const RecommendationForMe = () => {
+const MyRecommendation = () => {
     const { user } = useAuth();
     const [recommendations, setRecommendations] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/recommendation?userEmail=${user.email}`)
+        axios.get(`http://localhost:3000/myRecommendation?recommenderEmail=${user.email}`)
             .then(res => {
                 const data = res.data;
                 // console.log(data);
@@ -24,7 +22,7 @@ const RecommendationForMe = () => {
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            text: "Your recommendation will also be removed from the user's query.",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -32,7 +30,7 @@ const RecommendationForMe = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/recommendationForMe/${id}`)
+                axios.delete(`http://localhost:3000/myRecommendation/${id}`)
                     .then(res => {
                         console.log(res.data)
 
@@ -47,7 +45,6 @@ const RecommendationForMe = () => {
 
 
     }
-
     return (
         <div className="w-11/12 mx-auto mb-16">
             <div>
@@ -56,7 +53,7 @@ const RecommendationForMe = () => {
                         ?
                         <div>
                             <img className="mx-auto" src={nodata} alt="No Data img" />
-                            <p className="text-center my-5 text-2xl font-semibold text-amber-700">Sorry! No one has recommended your query yet...</p>
+                            <p className="text-center my-5 text-2xl font-semibold text-amber-700">Sorry! You have not recommended any query yet...</p>
                         </div>
                         :
                         <div className="overflow-x-auto">
@@ -65,8 +62,8 @@ const RecommendationForMe = () => {
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th>My Query</th>
-                                        <th>Recommendation</th>
+                                        <th> User Query</th>
+                                        <th>My Recommendation</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -91,7 +88,7 @@ const RecommendationForMe = () => {
                                             {/* Action Buttons */}
                                             <td>
                                                 <div className="flex flex-col md:flex-row  items-center gap-2">
-                                                    <Link to={`/recommendationForMe/${recommendation._id}`}>
+                                                    <Link to={`/myRecommendation/${recommendation._id}`}>
                                                         <button className="py-1 px-2 border border-green-500 rounded-md shadow">Details</button>
                                                     </Link>
                                                     <button onClick={() => handleDelete(recommendation._id)} className=" text-xl text-red-500 py-1 px-2 border border-red-500 rounded-md shadow"><MdDelete /></button>
@@ -110,4 +107,4 @@ const RecommendationForMe = () => {
     );
 };
 
-export default RecommendationForMe;
+export default MyRecommendation;

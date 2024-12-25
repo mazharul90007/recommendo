@@ -1,9 +1,7 @@
-
 import { useLoaderData } from "react-router-dom";
 
 
-const RecommendationForMeDetails = () => {
-
+const MyRecommendationDetails = () => {
     const recommendation = useLoaderData();
     console.log(recommendation);
     return (
@@ -11,7 +9,7 @@ const RecommendationForMeDetails = () => {
             <div className="grid md:grid-cols-2 gap-4">
                 <div className="md:grid-cols-1 border border-green-300 p-4">
                     <div className="card bg-base-100 w-full">
-                        <h2 className="text-2xl font-semibold text-center my-3">My Query</h2>
+                        <h2 className="text-2xl font-semibold text-center my-3">User Query</h2>
 
                         <figure className="">
                             <img
@@ -29,10 +27,11 @@ const RecommendationForMeDetails = () => {
                         </div>
                     </div>
                 </div>
+
                 <div className="md:grid-cols-1 border border-red-300 p-4">
                     <div className="card bg-base-100 w-full">
 
-                    <h2 className="text-2xl font-semibold text-center my-3">Recommendation For Me</h2>
+                    <h2 className="text-2xl font-semibold text-center my-3">My Recommendation</h2>
 
                         <figure className="">
                             <img
@@ -62,4 +61,4 @@ const RecommendationForMeDetails = () => {
     );
 };
 
-export default RecommendationForMeDetails;
+export default MyRecommendationDetails;

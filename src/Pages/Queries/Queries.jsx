@@ -10,26 +10,6 @@ const Queries = () => {
 
     return (
         <div className="w-11/12 mx-auto">
-            {/* <div className="hero bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-5 mb-5 rounded-lg">
-                <div className="hero-content text-center">
-                    <div className="max-w-2xl">
-                        <h1 className="text-5xl font-bold mb-6">
-                            Welcome to the Query Portal
-                        </h1>
-                        <p className="mb-8 text-lg">
-                            Have questions or suggestions? Add your queries and share them with others.
-                        </p>
-                        <Link to={'/addQueries'}>
-                            <button
-                                className="btn btn-primary px-8 py-3 text-lg font-semibold hover:bg-indigo-700 transition-all duration-300"
-                            >
-                                Add Queries
-                            </button>
-                        </Link>
-                    </div>
-                </div>
-            </div> */}
-
             <div>
                 {queries.length === 0
                     ?

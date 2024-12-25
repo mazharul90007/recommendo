@@ -22,8 +22,8 @@ const Navbar = () => {
         {
             user?.email && <>
                 <NavLink to={'/addQueries'}><li>Add Queries</li></NavLink>
-                <NavLink to={'/recommendationForMe'}><li>Recommendation For Me</li></NavLink>
                 <NavLink to={'/myQueries'}><li>My Queries</li></NavLink>
+                <NavLink to={'/recommendationForMe'}><li>Recommendation For Me</li></NavLink>
                 <NavLink to={'/myRecommendation'}><li>My Recommendation</li></NavLink>
             </>
         }
