@@ -11,7 +11,7 @@ import useAuth from "../../Hooks/useAuth";
 const UpdateQuery = () => {
 
     const loadedQuery = useLoaderData();
-    console.log(loadedQuery);
+    // console.log(loadedQuery);
 
     const { user } = useAuth()
     const navigate = useNavigate()
@@ -32,12 +32,12 @@ const UpdateQuery = () => {
 
         const updateQuery = { productName, brandName, imageURL, queryTitle, boycott, query, postedTime }
 
-        console.log(updateQuery);
+        // console.log(updateQuery);
 
         axios.patch(`https://recommendo-server.vercel.app/queries/${loadedQuery._id}`, updateQuery)
         .then(res => {
             const data = res.data;
-            console.log(data)
+            // console.log(data)
             if(data.modifiedCount > 0){
                 Swal.fire({
                     position: "top-end",

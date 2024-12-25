@@ -11,11 +11,11 @@ const Signin = () => {
 
     const handleGoogleSignUp = ()=>{
         googleSignUp()
-        .then(result =>{
-            console.log(result)
+        .then(() =>{
+            // console.log(result)
         })
-        .catch(error =>{
-            console.log(error)
+        .catch(() =>{
+            // console.log(error)
         })
     }
 
@@ -34,18 +34,13 @@ const Signin = () => {
         // console.log(user);
 
         login(email, password)
-        .then((result)=>{
-            console.log('sign in', result.user.email)
+        .then(()=>{
+            // console.log('sign in', result.user.email)
             // const user = {email: email}
-
-            // axios.post('https://job-hunter-server-chi.vercel.app/jwt', user, {withCredentials: true})
-            // .then(res =>{
-            //     console.log(res.data)
-            // })
             navigate(from)
         })
-        .catch(error =>{
-            console.log(error);
+        .catch(() =>{
+            // console.log(error);
         })
 
     }

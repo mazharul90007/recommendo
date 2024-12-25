@@ -11,11 +11,11 @@ const Registration = () => {
 
     const handleGoogleSignUp = ()=>{
         googleSignUp()
-        .then(result =>{
-            console.log(result)
+        .then(() =>{
+            // console.log(result)
         })
-        .catch(error =>{
-            console.log(error)
+        .catch(() =>{
+            // console.log(error)
         })
     }
 
@@ -28,16 +28,16 @@ const Registration = () => {
         const password = form.password.value;
         
 
-        const user = { name, photo, email, password}
-        console.log(user);
+        // const user = { name, photo, email, password}
+        // console.log(user);
 
         createUser(email, password)
-            .then(res => {
-                console.log(res.user)
+            .then(() => {
+                // console.log(res.user)
 
                 updateUser(name, photo)
                     .then(() => {
-                        console.log('Photo updated Successfully')
+                        // console.log('Photo updated Successfully')
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
@@ -46,13 +46,13 @@ const Registration = () => {
                             timer: 1500
                         });
                     })
-                    .catch(error => {
-                        console.log(error)
+                    .catch(() => {
+                        // console.log(error)
                     })
 
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                // console.log(error)
             })
 
     }
