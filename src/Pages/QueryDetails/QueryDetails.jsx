@@ -53,6 +53,13 @@ const QueryDetails = () => {
                 });
                 // navigate('/myQueries')
             }
+
+            //Update Recommendation Count
+            // axios.patch(`http://localhost:3000/queries/${query._id}`)
+            // .then(res => {
+            //     const data = res.data;
+            //     console.log(data)
+            // })
         })
 
     }

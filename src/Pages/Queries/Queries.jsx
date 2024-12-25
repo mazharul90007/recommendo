@@ -43,7 +43,7 @@ const Queries = () => {
                                         </div>
 
                                         <div className="card-actions flex items-center justify-between mt-auto">
-                                            <button className="">Reccommend Count: </button>
+                                            <button className="">Reccommend Count: {query.recommendationCount ? query.recommendationCount : '0'} </button>
                                             <Link to={`/queryDetails/${query._id}`}>
                                                 <button className=" py-2 px-3 border border-green-100 rounded-lg shadow text-green-700">Recommend</button>
                                             </Link>
