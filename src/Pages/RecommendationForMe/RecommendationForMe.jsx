@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
-import { MdDelete } from "react-icons/md";
+// import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import nodata from '../../assets/noData.png'
 
 
@@ -21,32 +21,32 @@ const RecommendationForMe = () => {
             })
     }, [user.email])
 
-    const handleDelete = (id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/recommendationForMe/${id}`)
-                    .then(res => {
-                        console.log(res.data)
+    // const handleDelete = (id) => {
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!"
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             axios.delete(`http://localhost:3000/recommendationForMe/${id}`)
+    //                 .then(res => {
+    //                     console.log(res.data)
 
-                        const remaining = recommendations.filter(recommendation => recommendation._id !== id);
-                        setRecommendations(remaining);
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-            }
-        })
+    //                     const remaining = recommendations.filter(recommendation => recommendation._id !== id);
+    //                     setRecommendations(remaining);
+    //                 })
+    //                 .catch(error => {
+    //                     console.log(error)
+    //                 })
+    //         }
+    //     })
 
 
-    }
+    // }
 
     return (
         <div className="w-11/12 mx-auto mb-16">
@@ -94,7 +94,7 @@ const RecommendationForMe = () => {
                                                     <Link to={`/recommendationForMe/${recommendation._id}`}>
                                                         <button className="py-1 px-2 border border-green-500 rounded-md shadow">Details</button>
                                                     </Link>
-                                                    <button onClick={() => handleDelete(recommendation._id)} className=" text-xl text-red-500 py-1 px-2 border border-red-500 rounded-md shadow"><MdDelete /></button>
+                                                    {/* <button onClick={() => handleDelete(recommendation._id)} className=" text-xl text-red-500 py-1 px-2 border border-red-500 rounded-md shadow"><MdDelete /></button> */}
                                                 </div>
                                             </td>
                                         </tr>)

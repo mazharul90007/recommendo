@@ -5,10 +5,14 @@ import { PiSubtitles } from "react-icons/pi";
 import { IoBan } from "react-icons/io5";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
-const AddQueries = () => {
+const UpdateQuery = () => {
+
+    const loadedQuery = useLoaderData();
+    console.log(loadedQuery);
+
     const { user } = useAuth()
     const navigate = useNavigate()
 
@@ -21,37 +25,36 @@ const AddQueries = () => {
         const queryTitle = form.queryTitle.value;
         const boycott = form.boycott.value;
         const query = form.query.value;
-        const authorImg = user.photoURL;
-        const authorName = user.displayName;
+        // const authorImg = user.photoURL;
+        // const authorName = user.displayName;
         const postedTime = Date.now();
-        const authorEmail = user.email;
+        // const authorEmail = user.email;
 
-        const productQuery = { productName, brandName, imageURL, queryTitle, boycott, query, authorImg, authorName, postedTime, authorEmail }
+        const updateQuery = { productName, brandName, imageURL, queryTitle, boycott, query, postedTime }
 
-        console.log(productQuery);
+        console.log(updateQuery);
 
-        axios.post('http://localhost:3000/queries', productQuery)
-            .then(res => {
-                const data = res.data;
-                if (data.insertedId) {
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Query has been Added Successfully",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    // navigate('/myQueries')
-                }
-            })
-
+        axios.patch(`http://localhost:3000/queries/${loadedQuery._id}`, updateQuery)
+        .then(res => {
+            const data = res.data;
+            console.log(data)
+            if(data.modifiedCount > 0){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Query has been Updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
     };
 
     return (
         <div className=" py-5 bg-gray-100 flex justify-center items-center">
             <div className="card w-full max-w-3xl bg-white shadow-md rounded-lg p-6">
                 <h1 className="text-3xl font-bold text-center text-primary mb-6">
-                    Add Your Query
+                    Update Your Query
                 </h1>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Product Name */}
@@ -63,7 +66,7 @@ const AddQueries = () => {
                             <FiBox className="absolute top-3 left-3 text-gray-400" />
                             <input
                                 type="text"
-                                placeholder="Enter Product Name"
+                                defaultValue={loadedQuery.productName}
                                 name="productName"
                                 className="input input-bordered w-full pl-10"
                                 required
@@ -79,7 +82,7 @@ const AddQueries = () => {
                             <AiOutlineUser className="absolute top-3 left-3 text-gray-400" />
                             <input
                                 type="text"
-                                placeholder="Enter Brand Name"
+                                defaultValue={loadedQuery.brandName}
                                 name="brandName"
                                 className="input input-bordered w-full pl-10"
                                 required
@@ -96,7 +99,7 @@ const AddQueries = () => {
                             <TbWorldWww className="absolute top-3 left-3 text-gray-400" />
                             <input
                                 type="text"
-                                placeholder="URL"
+                                defaultValue={loadedQuery.imageURL}
                                 name="imageURL"
                                 className="input input-bordered w-full pl-10"
                                 required
@@ -114,6 +117,7 @@ const AddQueries = () => {
                             <input
                                 type="text"
                                 placeholder="Enter Query Title"
+                                defaultValue={loadedQuery.queryTitle}
                                 name="queryTitle"
                                 className="input input-bordered w-full pl-10"
                                 required
@@ -131,6 +135,7 @@ const AddQueries = () => {
                             <input
                                 type="text"
                                 placeholder="Enter Boycotting Reason"
+                                defaultValue={loadedQuery.boycott}
                                 name="boycott"
                                 className="input input-bordered w-full pl-10"
                                 required
@@ -145,6 +150,7 @@ const AddQueries = () => {
                         </label>
                         <textarea
                             placeholder="Write your query in details here..."
+                            defaultValue={loadedQuery.query}
                             name="query"
                             className="textarea textarea-bordered w-full"
                             rows="5"
@@ -155,7 +161,7 @@ const AddQueries = () => {
                     {/* Submit Button */}
                     <div className="form-control">
                         <button type="submit" className="btn btn-primary w-full">
-                            Submit Query
+                            Update Query
                         </button>
                     </div>
                 </form>
@@ -164,4 +170,4 @@ const AddQueries = () => {
     );
 };
 
-export default AddQueries;
+export default UpdateQuery;

@@ -4,6 +4,7 @@ import { IoPerson, IoTime } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import nodata from '../../assets/noData.png'
+import Swal from "sweetalert2";
 
 
 const MyQueries = () => {
@@ -19,6 +20,33 @@ const MyQueries = () => {
                 console.log(data);
             })
     }, [user.email])
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "All the recommendations related to your query will also be deleted.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3000/recommendation/${id}`)
+                    .then(res => {
+                        console.log(res.data);
+
+                        axios.delete(`http://localhost:3000/queries/${id}`)
+
+                        const remaining = myQueries.filter(myQuery => myQuery._id !== id);
+                        setMyQueries(remaining);
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
+        })
+    }
     return (
         <div className="w-11/12 mx-auto mb-12">
             <div className="hero bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-5 mb-5 rounded-lg">
@@ -77,8 +105,12 @@ const MyQueries = () => {
                                                 <Link to={`/queryDetails/${query._id}`}>
                                                     <button className=" py-2 px-3 border rounded-lg shadow">View Details</button>
                                                 </Link>
-                                                <button className=" py-2 px-3 border rounded-lg shadow ">Update</button>
-                                                <button className=" py-2 px-3 border rounded-lg shadow ">Delete</button>
+
+                                                <Link to={`/updateQuery/${query._id}`}>
+                                                    <button className=" py-2 px-3 border rounded-lg shadow ">Update</button>
+                                                </Link>
+
+                                                <button onClick={()=>handleDelete(query._id)} className=" py-2 px-3 border rounded-lg shadow ">Delete</button>
                                             </div>
                                         </div>
                                     </div>)

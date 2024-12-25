@@ -5,13 +5,14 @@ import { IoPerson, IoTime } from "react-icons/io5";
 const Queries = () => {
 
     const queries = useLoaderData();
+    const sortedQueries = queries.sort((a,b) => new Date(b.postedTime) - new Date(a.postedTime))
     const { user } = useAuth()
     console.log(queries)
 
     return (
-        <div className="w-11/12 mx-auto">
+        <div className="w-11/12 mx-auto my-12">
             <div>
-                {queries.length === 0
+                {sortedQueries.length === 0
                     ?
                     <div>
                         <p>Sorry: No Queries Avaialable</p>
@@ -19,7 +20,7 @@ const Queries = () => {
                     :
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {
-                            queries.map(query =>
+                            sortedQueries.map(query =>
                                 <div
                                     key={query._id}
                                     className="card card-compact bg-base-100 shadow-xl">
