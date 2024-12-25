@@ -1,18 +1,35 @@
 import { Link, useLoaderData } from "react-router-dom";
 // import useAuth from "../../Hooks/useAuth";
 import { IoPerson, IoTime } from "react-icons/io5";
+import { useState } from "react";
 
 const Queries = () => {
 
     const queries = useLoaderData();
     const sortedQueries = queries.sort((a, b) => new Date(b.postedTime) - new Date(a.postedTime))
+
+    const [searchItem, setSearchItem] = useState('');
+
+    const filteredQueries = sortedQueries.filter(query => query.productName.toLowerCase().includes(searchItem.toLocaleLowerCase()));
     // const { user } = useAuth()
     console.log(queries)
 
     return (
         <div className="w-11/12 mx-auto my-12">
+
+            <div className="mb-6">
+                
+                <input
+                    type="text"
+                    value={searchItem}
+                    onChange={(e) => setSearchItem(e.target.value)}
+                    placeholder="Search by product name"
+                    className="w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+            </div>
+
             <div>
-                {sortedQueries.length === 0
+                {filteredQueries.length === 0
                     ?
                     <div>
                         <p>Sorry: No Queries Avaialable</p>
@@ -20,7 +37,7 @@ const Queries = () => {
                     :
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {
-                            sortedQueries.map(query =>
+                            filteredQueries.map(query =>
                                 <div
                                     key={query._id}
                                     className="card card-compact bg-base-100 shadow">
