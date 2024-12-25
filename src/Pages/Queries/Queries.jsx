@@ -6,26 +6,52 @@ import { useState } from "react";
 const Queries = () => {
 
     const queries = useLoaderData();
-    const sortedQueries = queries.sort((a, b) => new Date(b.postedTime) - new Date(a.postedTime))
+    const sortedQueries = [...queries].sort((a, b) => new Date(b.postedTime) - new Date(a.postedTime))
 
     const [searchItem, setSearchItem] = useState('');
 
     const filteredQueries = sortedQueries.filter(query => query.productName.toLowerCase().includes(searchItem.toLocaleLowerCase()));
     // const { user } = useAuth()
-    console.log(queries)
+    // console.log(queries)
+
+    const [columns, setColumns] = useState(3);
 
     return (
         <div className="w-11/12 mx-auto my-12">
 
             <div className="mb-6">
-                
+
                 <input
                     type="text"
                     value={searchItem}
                     onChange={(e) => setSearchItem(e.target.value)}
                     placeholder="Search by product name"
-                    className="w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
+            </div>
+
+            {/* Layout Toggle Buttons */}
+            <div className="my-3 gap-4 hidden md:flex justify-center">
+                <button
+                    onClick={() => setColumns(1)}
+                    className={`btn ${columns === 1 ? 'btn-primary' : 'btn-outline'}`}
+                >
+                    1 Column
+                </button>
+
+                <button
+                    onClick={() => setColumns(2)}
+                    className={`btn ${columns === 2 ? 'btn-primary' : 'btn-outline'}`}
+                >
+                    2 Column
+                </button>
+
+                <button
+                    onClick={() => setColumns(3)}
+                    className={`btn ${columns === 3 ? 'btn-primary' : 'btn-outline'}`}
+                >
+                    3 Column
+                </button>
             </div>
 
             <div>
@@ -35,12 +61,15 @@ const Queries = () => {
                         <p>Sorry: No Queries Avaialable</p>
                     </div>
                     :
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className={`grid gap-4 ${columns === 1 ? 'grid-cols-1 md:grid-cols-1' :
+                            columns === 2 ? 'grid-cols-1 md:grid-cols-2' :
+                                'grid-cols-1 md:grid-cols-3'
+                        }`}>
                         {
                             filteredQueries.map(query =>
                                 <div
                                     key={query._id}
-                                    className="card card-compact bg-base-100 shadow">
+                                    className={`card card-compact bg-base-100 shadow ${columns === 1 && 'w-full md:w-[500px] mx-auto'}`}>
                                     <figure>
                                         <img
                                             src={query.imageURL}
@@ -74,7 +103,7 @@ const Queries = () => {
                     </div>
                 }
             </div>
-        </div>
+        </div >
     );
 };
 
