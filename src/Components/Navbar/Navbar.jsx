@@ -5,10 +5,11 @@ import { authContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
 
-    const { user, logout } = useContext(authContext);
+    const { user, logout, setUser } = useContext(authContext);
     const handleLogOut = () => {
         logout()
             .then(() => {
+                setUser(null);
 
             })
             .catch(error => {
@@ -26,7 +27,7 @@ const Navbar = () => {
                 <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/myQueries'}><li>My Queries</li></NavLink>
 
                 <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/recommendationForMe'}><li>Recommendation For Me</li></NavLink>
-                
+
                 <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/myRecommendation'}><li>My Recommendation</li></NavLink>
             </>
         }

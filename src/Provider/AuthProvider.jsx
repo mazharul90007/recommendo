@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import auth from "../../firebase.config";
-import axios from "axios";
+// import axios from "axios";
 
 
 
@@ -54,24 +54,6 @@ const AuthProvider = ({ children }) => {
                 // console.log('No one is logged In')
                 setLoading(false);
             }
-            // console.log(currentUser?.email)
-            // if(currentUser?.email){
-            //     const user = {email: currentUser.email};
-            //     axios.post('https://job-hunter-server-chi.vercel.app/jwt', user, {withCredentials: true})
-            //     .then(res => {
-            //         console.log('login token', res.data)
-            //         setLoading(false);
-            //     })
-            // }
-            // else{
-            //     axios.post('https://job-hunter-server-chi.vercel.app/logout', {}, {withCredentials: true})
-            //     .then(res=> {
-            //         console.log('logout', res.data)
-            //         setLoading(false);
-            //     })
-            // }
-            //put it in the right place
-            
         })
 
         return () => {
@@ -87,7 +69,8 @@ const AuthProvider = ({ children }) => {
         login,
         updateUser,
         logout,
-        googleSignUp
+        googleSignUp,
+        setUser
 
 
 
