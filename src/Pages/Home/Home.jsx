@@ -27,7 +27,7 @@ const Home = () => {
                                 sortedQueries.slice(0, 6).map(query =>
                                     <div
                                         key={query._id}
-                                        className="card card-compact bg-base-100 shadow-xl">
+                                        className="card card-compact bg-base-100 shadow-md">
                                         <figure>
                                             <img
                                                 src={query.imageURL}

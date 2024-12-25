@@ -1,12 +1,12 @@
 import { Link, useLoaderData } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
+// import useAuth from "../../Hooks/useAuth";
 import { IoPerson, IoTime } from "react-icons/io5";
 
 const Queries = () => {
 
     const queries = useLoaderData();
-    const sortedQueries = queries.sort((a,b) => new Date(b.postedTime) - new Date(a.postedTime))
-    const { user } = useAuth()
+    const sortedQueries = queries.sort((a, b) => new Date(b.postedTime) - new Date(a.postedTime))
+    // const { user } = useAuth()
     console.log(queries)
 
     return (
@@ -23,14 +23,17 @@ const Queries = () => {
                             sortedQueries.map(query =>
                                 <div
                                     key={query._id}
-                                    className="card card-compact bg-base-100 shadow-xl">
+                                    className="card card-compact bg-base-100 shadow">
                                     <figure>
                                         <img
                                             src={query.imageURL}
                                             alt="Shoes" />
                                     </figure>
+
                                     <div className="card-body flex flex-col">
                                         <h2 className="card-title">{query.queryTitle}</h2>
+
+                                        <p className="text-gray-500 font-medium">Item: {query.productName}</p>
                                         <div className="flex justify-between items-center">
                                             <img
                                                 src={query.authorImg}
