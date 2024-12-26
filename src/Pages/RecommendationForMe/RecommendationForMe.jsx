@@ -13,7 +13,7 @@ const RecommendationForMe = () => {
     const [recommendations, setRecommendations] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://recommendo-server.vercel.app/recommendation?userEmail=${user.email}`)
+        axios.get(`http://localhost:3000/recommendation?userEmail=${user.email}`)
             .then(res => {
                 const data = res.data;
                 // console.log(data);
@@ -32,7 +32,7 @@ const RecommendationForMe = () => {
     //         confirmButtonText: "Yes, delete it!"
     //     }).then((result) => {
     //         if (result.isConfirmed) {
-    //             axios.delete(`https://recommendo-server.vercel.app/recommendationForMe/${id}`)
+    //             axios.delete(`http://localhost:3000/recommendationForMe/${id}`)
     //                 .then(res => {
     //                     console.log(res.data)
 

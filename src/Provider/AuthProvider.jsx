@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import auth from "../../firebase.config";
+import axios from "axios";
 // import axios from "axios";
 
 
@@ -19,7 +20,7 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const googleSignUp = ()=>{
+    const googleSignUp = () => {
         signInWithPopup(auth, googleProvider)
     }
 
@@ -28,7 +29,7 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const updateUser = (name, photo)=>{
+    const updateUser = (name, photo) => {
         setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName: name,
@@ -36,23 +37,29 @@ const AuthProvider = ({ children }) => {
         })
     }
 
-    const logout = ()=>{
+    const logout = () => {
         setLoading(true);
-       return signOut(auth)
+        return signOut(auth)
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            
-            if (currentUser) {
-                // console.log(currentUser);
-                setUser(currentUser);
-                setLoading(false);
-
+            setUser(currentUser);
+            if (currentUser?.email) {
+                const user = { email: currentUser.email };
+                axios.post('http://localhost:3000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        const data = res.data
+                        console.log(data)
+                        setLoading(false);
+                    })
             }
             else {
-                // console.log('No one is logged In')
-                setLoading(false);
+                axios.post('http://localhost:3000/logout', {}, {withCredentials: true})
+                .then(res=> {
+                    console.log('logout', res.data)
+                    setLoading(false);
+                })
             }
         })
 

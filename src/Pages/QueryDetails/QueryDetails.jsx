@@ -11,12 +11,12 @@ import Swal from "sweetalert2";
 const QueryDetails = () => {
     const {user} = useAuth();
     const query = useLoaderData();
-    console.log(query);
+    // console.log(query);
     const [recommend, setRecommend] = useState(false)
 
     const handleRecommendBtn = () => {
         setRecommend(!recommend)
-        console.log(recommend)
+        // console.log(recommend)
     }
 
     const handleRecommendation = (e) => {
@@ -38,9 +38,9 @@ const QueryDetails = () => {
 
         const recommendation = {recommendTitle, recommendedProductName, recommendedImageURL, recommendationReason, queryId, queryTitle, queryImage, productName, userName, userEmail, recommenderEmail, recommenderName, recommendTime}
 
-        console.log(recommendation);
+        // console.log(recommendation);
 
-        axios.post('https://recommendo-server.vercel.app/recommendation', recommendation)
+        axios.post('http://localhost:3000/recommendation', recommendation)
         .then(res => {
             const data = res.data;
             if (data.insertedId) {
@@ -55,7 +55,7 @@ const QueryDetails = () => {
             }
 
             //Update Recommendation Count
-            // axios.patch(`https://recommendo-server.vercel.app/queries/${query._id}`)
+            // axios.patch(`http://localhost:3000/queries/${query._id}`)
             // .then(res => {
             //     const data = res.data;
             //     console.log(data)

@@ -13,11 +13,11 @@ const MyQueries = () => {
 
 
     useEffect(() => {
-        axios.get(`https://recommendo-server.vercel.app/queries?authorEmail=${user.email}`)
+        axios.get(`http://localhost:3000/queries?authorEmail=${user.email}`)
             .then(res => {
                 const data = res.data;
                 setMyQueries(data);
-                console.log(data);
+                // console.log(data);
             })
     }, [user.email])
 
@@ -32,11 +32,11 @@ const MyQueries = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://recommendo-server.vercel.app/recommendation/${id}`)
+                axios.delete(`http://localhost:3000/recommendation/${id}`)
                     .then(res => {
                         console.log(res.data);
 
-                        axios.delete(`https://recommendo-server.vercel.app/queries/${id}`)
+                        axios.delete(`http://localhost:3000/queries/${id}`)
 
                         const remaining = myQueries.filter(myQuery => myQuery._id !== id);
                         setMyQueries(remaining);

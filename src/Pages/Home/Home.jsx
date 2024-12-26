@@ -9,7 +9,7 @@ const Home = () => {
     const queries = useLoaderData();
     const sortedQueries = queries.sort((a, b) => new Date(b.postedTime) - new Date(a.postedTime))
     // const { user } = useAuth()
-    console.log(queries)
+    // console.log(queries)
 
     return (
         <div>

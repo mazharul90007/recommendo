@@ -28,9 +28,9 @@ const AddQueries = () => {
 
         const productQuery = { productName, brandName, imageURL, queryTitle, boycott, query, authorImg, authorName, postedTime, authorEmail }
 
-        console.log(productQuery);
+        // console.log(productQuery);
 
-        axios.post('https://recommendo-server.vercel.app/queries', productQuery)
+        axios.post('http://localhost:3000/queries', productQuery)
             .then(res => {
                 const data = res.data;
                 if (data.insertedId) {

@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const MyRecommendationDetails = () => {
     const recommendation = useLoaderData();
-    console.log(recommendation);
+    // console.log(recommendation);
     return (
         <div className="w-11/12 mx-auto my-12">
             <div className="grid md:grid-cols-2 gap-4">

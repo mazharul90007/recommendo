@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 
 // import axios from "axios";
 
@@ -37,6 +38,11 @@ const Signin = () => {
         .then(()=>{
             // console.log('sign in', result.user.email)
             // const user = {email: email}
+            // axios.post('http://localhost:3000/jwt', user, {withCredentials: true})
+            // .then(res =>{
+            //     const data = res.data
+            //     console.log(data)
+            // })
             navigate(from)
         })
         .catch(() =>{
