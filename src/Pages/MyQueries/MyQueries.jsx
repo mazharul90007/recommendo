@@ -5,21 +5,29 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import nodata from '../../assets/noData.png'
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const MyQueries = () => {
     const [myQueries, setMyQueries] = useState([])
     const { user } = useAuth()
+    const axiosSecure = useAxiosSecure();
 
 
     useEffect(() => {
-        axios.get(`https://recommendo-server.vercel.app/queries?authorEmail=${user.email}`)
+        // axios.get(`https://recommendo-server.vercel.app/queries?authorEmail=${user.email}`)
+        //     .then(res => {
+        //         const data = res.data;
+        //         setMyQueries(data);
+        //         // console.log(data);
+        //     })
+        axiosSecure.get(`/queries?authorEmail=${user.email}`)
             .then(res => {
                 const data = res.data;
-                setMyQueries(data);
                 // console.log(data);
+                setMyQueries(data);
             })
-    }, [user.email])
+    }, [axiosSecure ,user.email])
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -110,7 +118,7 @@ const MyQueries = () => {
                                                     <button className=" py-2 px-3 border rounded-lg shadow ">Update</button>
                                                 </Link>
 
-                                                <button onClick={()=>handleDelete(query._id)} className=" py-2 px-3 border rounded-lg shadow ">Delete</button>
+                                                <button onClick={() => handleDelete(query._id)} className=" py-2 px-3 border rounded-lg shadow ">Delete</button>
                                             </div>
                                         </div>
                                     </div>)
