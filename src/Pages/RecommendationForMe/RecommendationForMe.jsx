@@ -1,25 +1,33 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 // import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 // import Swal from "sweetalert2";
 import nodata from '../../assets/noData.png'
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 
 const RecommendationForMe = () => {
     const { user } = useAuth();
     const [recommendations, setRecommendations] = useState([]);
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        axios.get(`https://recommendo-server.vercel.app/recommendation?userEmail=${user.email}`)
+        // axios.get(`https://recommendo-server.vercel.app/recommendation?userEmail=${user.email}`)
+        //     .then(res => {
+        //         const data = res.data;
+        //         // console.log(data);
+        //         setRecommendations(data);
+        //     })
+
+        axiosSecure.get(`/recommendation?userEmail=${user.email}`)
             .then(res => {
                 const data = res.data;
                 // console.log(data);
                 setRecommendations(data);
             })
-    }, [user.email])
+    }, [axiosSecure, user.email])
 
     // const handleDelete = (id) => {
     //     Swal.fire({
