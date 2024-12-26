@@ -5,19 +5,29 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import nodata from '../../assets/noData.png'
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const MyRecommendation = () => {
     const { user } = useAuth();
     const [recommendations, setRecommendations] = useState([]);
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/myRecommendation?recommenderEmail=${user.email}`, {withCredentials: true})
-            .then(res => {
-                const data = res.data;
-                // console.log(data);
-                setRecommendations(data);
-            })
-    }, [user.email])
+        // axios.get(`http://localhost:3000/myRecommendation?recommenderEmail=${user.email}`, {withCredentials: true})
+        //     .then(res => {
+        //         const data = res.data;
+        //         // console.log(data);
+        //         setRecommendations(data);
+        //     })
+
+        axiosSecure.get(`/myRecommendation?recommenderEmail=${user.email}`)
+        .then(res => {
+                    const data = res.data;
+                    console.log(data);
+                    setRecommendations(data);
+                })
+
+    }, [axiosSecure, user.email])
 
     const handleDelete = (id) => {
         Swal.fire({
