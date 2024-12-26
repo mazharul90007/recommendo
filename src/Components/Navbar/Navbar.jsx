@@ -34,7 +34,7 @@ const Navbar = () => {
         }
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 py-3">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -74,7 +74,7 @@ const Navbar = () => {
                 {
                     user ? <div className="flex gap-4 items-center">
                         <img src={user.photoURL}
-                            className="w-16 h-16 p-1 border-2 border-red-500 shadow-lg rounded-full"
+                            className="w-12 h-12 p-1 border-2 border-red-500 shadow-lg rounded-full"
                             alt="" />
                         <button onClick={handleLogOut} className="btn">LogOut</button>
                     </div>
