@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
+import icon from '../../assets/RecommendoIcon.png'
 
 
 const Navbar = () => {
@@ -18,17 +19,17 @@ const Navbar = () => {
     }
 
     const links = <>
-        <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/'}><li>Home</li></NavLink>
+        <NavLink className={({ isActive }) => isActive ? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/'}><li>Home</li></NavLink>
 
-        <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/queries'}><li>Queries</li></NavLink>
+        <NavLink className={({ isActive }) => isActive ? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/queries'}><li>Queries</li></NavLink>
 
         {
             user?.email && <>
-                <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/myQueries'}><li>My Queries</li></NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/myQueries'}><li>My Queries</li></NavLink>
 
-                <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/recommendationForMe'}><li>Recommendation For Me</li></NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/recommendationForMe'}><li>Recommendation For Me</li></NavLink>
 
-                <NavLink className={({isActive})=> isActive? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/myRecommendation'}><li>My Recommendation</li></NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'text-green-600 font-bold underline' : 'hover:text-green-600 hover:font-bold'} to={'/myRecommendation'}><li>My Recommendation</li></NavLink>
             </>
         }
     </>
@@ -56,7 +57,13 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to={'/'}><button className="btn btn-ghost text-2xl">Recommendo</button></Link>
+                <Link to={'/'}>
+                    <div className="flex items-center gap-2">
+                        <img className="h-8 w-8" src={icon} alt="" />
+                        <p className="text-2xl font-bold">Recommendo</p>
+                    </div>
+                    {/* <button className="btn btn-ghost text-2xl">Recommendo</button> */}
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu flex gap-3 menu-horizontal px-1">

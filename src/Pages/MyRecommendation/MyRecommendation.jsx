@@ -13,7 +13,7 @@ const MyRecommendation = () => {
     const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        // axios.get(`http://localhost:3000/myRecommendation?recommenderEmail=${user.email}`, {withCredentials: true})
+        // axios.get(`https://recommendo-server.vercel.app/myRecommendation?recommenderEmail=${user.email}`, {withCredentials: true})
         //     .then(res => {
         //         const data = res.data;
         //         // console.log(data);
@@ -23,7 +23,7 @@ const MyRecommendation = () => {
         axiosSecure.get(`/myRecommendation?recommenderEmail=${user.email}`)
         .then(res => {
                     const data = res.data;
-                    console.log(data);
+                    // console.log(data);
                     setRecommendations(data);
                 })
 
@@ -40,7 +40,7 @@ const MyRecommendation = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/myRecommendation/${id}`)
+                axios.delete(`https://recommendo-server.vercel.app/myRecommendation/${id}`)
                     .then(res => {
                         console.log(res.data)
 

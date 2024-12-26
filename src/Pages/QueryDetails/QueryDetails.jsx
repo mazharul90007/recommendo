@@ -40,7 +40,7 @@ const QueryDetails = () => {
 
         // console.log(recommendation);
 
-        axios.post('http://localhost:3000/recommendation', recommendation)
+        axios.post('https://recommendo-server.vercel.app/recommendation', recommendation)
         .then(res => {
             const data = res.data;
             if (data.insertedId) {
@@ -55,7 +55,7 @@ const QueryDetails = () => {
             }
 
             //Update Recommendation Count
-            // axios.patch(`http://localhost:3000/queries/${query._id}`)
+            // axios.patch(`https://recommendo-server.vercel.app/queries/${query._id}`)
             // .then(res => {
             //     const data = res.data;
             //     console.log(data)
