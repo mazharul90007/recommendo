@@ -38,7 +38,7 @@ const Signin = () => {
         .then(()=>{
             // console.log('sign in', result.user.email)
             // const user = {email: email}
-            // axios.post('https://recommendo-server.vercel.app/jwt', user, {withCredentials: true})
+            // axios.post('http://localhost:3000/jwt', user, {withCredentials: true})
             // .then(res =>{
             //     const data = res.data
             //     console.log(data)

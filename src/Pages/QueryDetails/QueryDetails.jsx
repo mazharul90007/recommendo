@@ -2,25 +2,23 @@ import { useLoaderData } from "react-router-dom";
 import { FiBox } from "react-icons/fi";
 import { TbWorldWww } from "react-icons/tb";
 import { PiSubtitles } from "react-icons/pi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
 const QueryDetails = () => {
-    const {user} = useAuth();
+    const { user } = useAuth();
     const query = useLoaderData();
-    // console.log(query);
-    const [recommend, setRecommend] = useState(false)
+    const [recommend, setRecommend] = useState(false);
+    const [comments, setComments] = useState([]);
 
     const handleRecommendBtn = () => {
-        setRecommend(!recommend)
-        // console.log(recommend)
-    }
+        setRecommend(!recommend);
+    };
 
     const handleRecommendation = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const form = e.target;
         const recommendTitle = form.recommendationTitle.value;
         const recommendedProductName = form.recommendedProductName.value;
@@ -36,51 +34,87 @@ const QueryDetails = () => {
         const recommenderName = user.displayName;
         const recommendTime = Date.now();
 
-        const recommendation = {recommendTitle, recommendedProductName, recommendedImageURL, recommendationReason, queryId, queryTitle, queryImage, productName, userName, userEmail, recommenderEmail, recommenderName, recommendTime}
+        const recommendation = {
+            recommendTitle,
+            recommendedProductName,
+            recommendedImageURL,
+            recommendationReason,
+            queryId,
+            queryTitle,
+            queryImage,
+            productName,
+            userName,
+            userEmail,
+            recommenderEmail,
+            recommenderName,
+            recommendTime,
+        };
 
-        // console.log(recommendation);
+        axios
+            .post("http://localhost:3000/recommendation", recommendation)
+            .then((res) => {
+                const data = res.data;
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Recommendation has been Added Successfully",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            });
+    };
 
-        axios.post('https://recommendo-server.vercel.app/recommendation', recommendation)
-        .then(res => {
-            const data = res.data;
-            if (data.insertedId) {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Recommendation has been Added Successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                // navigate('/myQueries')
-            }
+    useEffect(() => {
+        axios
+            .get(`http://localhost:3000/queryDetails/${query._id}`)
+            .then((res) => {
+                const data = res.data;
+                setComments(data);
+            });
+    }, [query._id]);
 
-            //Update Recommendation Count
-            // axios.patch(`https://recommendo-server.vercel.app/queries/${query._id}`)
-            // .then(res => {
-            //     const data = res.data;
-            //     console.log(data)
-            // })
-        })
-
-    }
     return (
         <div className="hero bg-base-200 mb-12 w-11/12 mx-auto py-4 md:py-10">
             <div className="hero-content flex-col">
+                <p>Total Comments: {comments.length}</p>
                 <div>
                     <img
                         src={query.imageURL}
-                        className="max-w-sm rounded-lg shadow" />
+                        className="max-w-sm rounded-lg shadow"
+                        alt={query.queryTitle}
+                    />
                 </div>
                 <div>
                     <h1 className="text-3xl font-bold mb-5">{query.queryTitle}</h1>
-                    <p className="text-gray-700"><span className="font-semibold text-black">Product:</span> {query.productName}</p>
-                    <p className="text-gray-700"><span className="font-semibold text-black">Details:</span> {query.query}</p>
+                    <p className="text-gray-700">
+                        <span className="font-semibold text-black">Product:</span>{" "}
+                        {query.productName}
+                    </p>
+                    <p className="text-gray-700">
+                        <span className="font-semibold text-black">Details:</span>{" "}
+                        {query.query}
+                    </p>
                     <div className="flex gap-5 items-center my-5">
-                        <img className="w-16 h-16 rounded-full p-1 border-2 border-gray-300" src={query.authorImg} alt="" />
-
+                        <img
+                            className="w-16 h-16 rounded-full p-1 border-2 border-gray-300"
+                            src={query.authorImg}
+                            alt={query.authorName}
+                        />
                         <div>
-                            <p className="text-black font-semibold">Posted By: <span className="text-gray-700 italic font-normal">{query.authorName}</span></p>
-                            <p className="text-black font-semibold">Posted Time: <span className="text-gray-700 italic font-normal">{new Date(query.postedTime).toLocaleString()}</span></p>
+                            <p className="text-black font-semibold">
+                                Posted By:{" "}
+                                <span className="text-gray-700 italic font-normal">
+                                    {query.authorName}
+                                </span>
+                            </p>
+                            <p className="text-black font-semibold">
+                                Posted Time:{" "}
+                                <span className="text-gray-700 italic font-normal">
+                                    {new Date(query.postedTime).toLocaleString()}
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -88,13 +122,12 @@ const QueryDetails = () => {
                 {/* Recommend Button */}
                 <div>
                     <button onClick={handleRecommendBtn} className="btn btn-primary">
-                        {recommend ? 'Hide Recommendation' : 'Add a Recommendation'}
+                        {recommend ? "Hide Recommendation" : "Add a Recommendation"}
                     </button>
                 </div>
 
-                {/* Recomendation Form */}
-
-                {recommend &&
+                {/* Recommendation Form */}
+                {recommend && (
                     <div className="card w-full max-w-3xl bg-white shadow-md rounded-lg p-6">
                         <h1 className="text-3xl font-bold text-center text-primary mb-6">
                             Add Recommendation
@@ -175,7 +208,32 @@ const QueryDetails = () => {
                             </div>
                         </form>
                     </div>
-                }
+                )}
+
+                {/* Comments Section */}
+                <div className="comments-section w-full mt-6">
+                    {comments.map((comment) => (
+                        <div className=" w-full grid grid-cols-12 gap-2 items-start my-5 p-4 bg-white rounded-lg shadow-sm" key={comment._id}>
+                            <div className="col-span-3">
+                                <p className="text-gray-600 text-sm">Recommended By:</p>
+                                <p className="font-semibold">{comment.recommenderName}</p>
+                                <p className="text-gray-600">{comment.commentText}</p>
+                                <p className="text-gray-500 text-sm italic mb-2">{new Date(comment.recommendTime).toLocaleString()}</p>
+                            </div>
+                            <div className="text-gray-600 col-span-6">
+                                <p>Recommendation: {comment.recommendTitle}</p>
+                                <p>Recommended Product: {comment.recommendedProductName}</p>
+                            </div>
+                            <div className="col-span-3 flex justify-end">
+                                <img
+                                    className="w-24 h-24 rounded-sm"
+                                    src={comment.recommendedImageURL || "https://via.placeholder.com/40"}
+                                    alt={comment.recommenderName}
+                                />
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

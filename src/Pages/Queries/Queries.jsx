@@ -19,8 +19,13 @@ const Queries = () => {
 
     return (
         <div className="w-11/12 mx-auto mb-12">
-            <div className="mb-12">
+            <div className="mb-6">
                 <img className="rounded-xl" src={query} alt="" />
+            </div>
+            <div className="mx-auto text-center">
+                <Link to={'/addQueries'}>
+                    <button className="btn btn-primary mb-12">Add Your Query</button>
+                </Link>
             </div>
 
             <div className="mb-12">
@@ -66,8 +71,8 @@ const Queries = () => {
                     </div>
                     :
                     <div className={`grid gap-4 ${columns === 1 ? 'grid-cols-1 md:grid-cols-1' :
-                            columns === 2 ? 'grid-cols-1 md:grid-cols-2' :
-                                'grid-cols-1 md:grid-cols-3'
+                        columns === 2 ? 'grid-cols-1 md:grid-cols-2' :
+                            'grid-cols-1 md:grid-cols-3'
                         }`}>
                         {
                             filteredQueries.map(query =>

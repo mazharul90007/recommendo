@@ -34,7 +34,7 @@ const UpdateQuery = () => {
 
         // console.log(updateQuery);
 
-        axios.patch(`https://recommendo-server.vercel.app/queries/${loadedQuery._id}`, updateQuery)
+        axios.patch(`http://localhost:3000/queries/${loadedQuery._id}`, updateQuery)
         .then(res => {
             const data = res.data;
             // console.log(data)
