@@ -2,6 +2,8 @@ import Banner from "../../Components/Banner/Banner";
 import { Link, useLoaderData } from "react-router-dom";
 // import useAuth from "../../Hooks/useAuth";
 import { IoPerson, IoTime } from "react-icons/io5";
+import HowItWorks from "../../Components/HowItWorks/HowItWorks";
+import Testimonials from "../../Components/Testimonials/Testimonials";
 
 
 const Home = () => {
@@ -68,6 +70,8 @@ const Home = () => {
                     </Link>
                 </div>
             </div>
+            <HowItWorks></HowItWorks>
+            <Testimonials></Testimonials>
         </div>
     );
 };

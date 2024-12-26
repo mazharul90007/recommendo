@@ -41,7 +41,7 @@ const AddQueries = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    // navigate('/myQueries')
+                    navigate('/myQueries')
                 }
             })
 
@@ -50,7 +50,7 @@ const AddQueries = () => {
     return (
         <div className=" py-5 bg-gray-100 flex justify-center items-center">
             <div className="card w-full max-w-3xl bg-white shadow-md rounded-lg p-6">
-                <h1 className="text-3xl font-bold text-center text-primary mb-6">
+                <h1 className="text-3xl font-bold text-center text-green-600 mb-6">
                     Add Your Query
                 </h1>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -154,7 +154,7 @@ const AddQueries = () => {
 
                     {/* Submit Button */}
                     <div className="form-control">
-                        <button type="submit" className="btn btn-primary w-full">
+                        <button type="submit" className="btn btn-success w-full">
                             Submit Query
                         </button>
                     </div>

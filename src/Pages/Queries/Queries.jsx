@@ -34,21 +34,21 @@ const Queries = () => {
             <div className="my-3 gap-4 hidden md:flex justify-center">
                 <button
                     onClick={() => setColumns(1)}
-                    className={`btn ${columns === 1 ? 'btn-primary' : 'btn-outline'}`}
+                    className={`btn ${columns === 1 ? 'btn-success' : 'btn-outline'}`}
                 >
                     1 Column
                 </button>
 
                 <button
                     onClick={() => setColumns(2)}
-                    className={`btn ${columns === 2 ? 'btn-primary' : 'btn-outline'}`}
+                    className={`btn ${columns === 2 ? 'btn-success' : 'btn-outline'}`}
                 >
                     2 Column
                 </button>
 
                 <button
                     onClick={() => setColumns(3)}
-                    className={`btn ${columns === 3 ? 'btn-primary' : 'btn-outline'}`}
+                    className={`btn ${columns === 3 ? 'btn-success' : 'btn-outline'}`}
                 >
                     3 Column
                 </button>

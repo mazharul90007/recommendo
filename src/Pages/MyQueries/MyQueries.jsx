@@ -57,7 +57,7 @@ const MyQueries = () => {
     }
     return (
         <div className="w-11/12 mx-auto mb-12">
-            <div className="hero bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-5 mb-5 rounded-lg">
+            <div className="hero bg-gradient-to-r from-green-600 to-green-700 text-white py-5 mb-5 rounded-lg">
                 <div className="hero-content text-center">
                     <div className="max-w-2xl">
                         <h1 className="text-5xl font-bold mb-6">
@@ -68,7 +68,7 @@ const MyQueries = () => {
                         </p>
                         <Link to={'/addQueries'}>
                             <button
-                                className="btn btn-primary px-8 py-3 text-lg font-semibold hover:bg-indigo-700 transition-all duration-300"
+                                className="btn btn-success px-8 py-3 text-lg text-white font-semibold border border-green-600 transition-all duration-300 shadow-md"
                             >
                                 Add Queries
                             </button>

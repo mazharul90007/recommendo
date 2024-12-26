@@ -4,7 +4,6 @@ import { Slide } from "react-awesome-reveal";
 import img1 from '../../assets/banner1.png'
 import img2 from '../../assets/banner2.png'
 import img3 from '../../assets/banner3.png'
-import img4 from '../../assets/banner4.jpg'
 import { Link } from "react-router-dom";
 
 
