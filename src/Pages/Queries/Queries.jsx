@@ -2,6 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 // import useAuth from "../../Hooks/useAuth";
 import { IoPerson, IoTime } from "react-icons/io5";
 import { useState } from "react";
+import query from '../../assets/query.png'
 
 const Queries = () => {
 
@@ -17,9 +18,12 @@ const Queries = () => {
     const [columns, setColumns] = useState(3);
 
     return (
-        <div className="w-11/12 mx-auto my-12">
+        <div className="w-11/12 mx-auto mb-12">
+            <div className="mb-12">
+                <img className="rounded-xl" src={query} alt="" />
+            </div>
 
-            <div className="mb-6">
+            <div className="mb-12">
 
                 <input
                     type="text"
