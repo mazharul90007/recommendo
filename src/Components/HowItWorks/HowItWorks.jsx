@@ -40,7 +40,7 @@ const HowItWorks = () => {
                     </div>
 
                     <div className="mt-8">
-                        <Link to={'/signin'}>
+                        <Link to={'/addQueries'}>
                             <button className="btn btn-primary">Start Your Query Now</button>
                         </Link>
                     </div>

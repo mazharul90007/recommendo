@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/queries',
-        element: <PrivateRoute><Queries></Queries></PrivateRoute>,
+        element: <Queries></Queries>,
         loader: () => fetch('https://recommendo-server.vercel.app/queries')
       },
       {
