@@ -37,6 +37,15 @@ The goal of Recommendo is to enable users to post product-related questions and 
 
 ---
 
+## 📦 **npm Packages Used**
+The following npm packages were used in the frontend of the project:
+
+- **Axios:** Promise-based HTTP client for making requests to the server.
+- **React Awesome Reveal:** Library for adding smooth and elegant animations to the React components.
+- **React Icons:** A collection of customizable icons for React applications.
+
+---
+
 ## 🚀 **Features Checklist**
 ### **Authentication System**
 - User registration and login with email/password and Google SignUp.
