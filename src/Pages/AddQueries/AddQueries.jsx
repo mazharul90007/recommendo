@@ -30,7 +30,7 @@ const AddQueries = () => {
 
         // console.log(productQuery);
 
-        axios.post('http://localhost:3000/queries', productQuery)
+        axios.post('https://recommendo-server.vercel.app/queries', productQuery)
             .then(res => {
                 const data = res.data;
                 if (data.insertedId) {

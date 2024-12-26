@@ -51,7 +51,7 @@ const QueryDetails = () => {
         };
 
         axios
-            .post("http://localhost:3000/recommendation", recommendation)
+            .post("https://recommendo-server.vercel.app/recommendation", recommendation)
             .then((res) => {
                 const data = res.data;
                 if (data.insertedId) {
@@ -68,7 +68,7 @@ const QueryDetails = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/queryDetails/${query._id}`)
+            .get(`https://recommendo-server.vercel.app/queryDetails/${query._id}`)
             .then((res) => {
                 const data = res.data;
                 setComments(data);
