@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
-import axios from "axios";
+// import axios from "axios";
 
 // import axios from "axios";
 

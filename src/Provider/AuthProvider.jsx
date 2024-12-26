@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    console.log(user);
+    // console.log(user);
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -48,9 +48,9 @@ const AuthProvider = ({ children }) => {
             if (currentUser?.email) {
                 const user = { email: currentUser.email };
                 axios.post('http://localhost:3000/jwt', user, { withCredentials: true })
-                    .then(res => {
-                        const data = res.data
-                        console.log(data)
+                    .then(() => {
+                        // const data = res.data
+                        // console.log(data)
                         setLoading(false);
                     })
             }
