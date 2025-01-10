@@ -28,39 +28,45 @@ const Queries = () => {
                 </Link>
             </div>
 
-            <div className="mb-12">
+            <div className="mb-12 grid grid-cols-2 items-center">
+                <div className="col-span-1">
+                    <h2 className="font-semibold ">Search Query:</h2>
+                    <input
+                        type="text"
+                        value={searchItem}
+                        onChange={(e) => setSearchItem(e.target.value)}
+                        placeholder="Search by product name"
+                        className="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                    />
+                </div>
 
-                <input
-                    type="text"
-                    value={searchItem}
-                    onChange={(e) => setSearchItem(e.target.value)}
-                    placeholder="Search by product name"
-                    className="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-            </div>
+                {/* Layout Toggle Buttons */}
+                <div className="col-span-1">
+                    <h2 className="text-xl font-semibold border-b border-green-600 w-fit mx-auto text-green-600 px-2">View In</h2>
 
-            {/* Layout Toggle Buttons */}
-            <div className="my-3 gap-4 hidden md:flex justify-center">
-                <button
-                    onClick={() => setColumns(1)}
-                    className={`btn ${columns === 1 ? 'btn-success' : 'btn-outline'}`}
-                >
-                    1 Column
-                </button>
+                    <div className="my-3 gap-4 hidden md:flex justify-center">
+                        <button
+                            onClick={() => setColumns(1)}
+                            className={`btn ${columns === 1 ? 'btn-success' : 'btn-outline'}`}
+                        >
+                            1 Column
+                        </button>
 
-                <button
-                    onClick={() => setColumns(2)}
-                    className={`btn ${columns === 2 ? 'btn-success' : 'btn-outline'}`}
-                >
-                    2 Column
-                </button>
+                        <button
+                            onClick={() => setColumns(2)}
+                            className={`btn ${columns === 2 ? 'btn-success' : 'btn-outline'}`}
+                        >
+                            2 Column
+                        </button>
 
-                <button
-                    onClick={() => setColumns(3)}
-                    className={`btn ${columns === 3 ? 'btn-success' : 'btn-outline'}`}
-                >
-                    3 Column
-                </button>
+                        <button
+                            onClick={() => setColumns(3)}
+                            className={`btn ${columns === 3 ? 'btn-success' : 'btn-outline'}`}
+                        >
+                            3 Column
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div>
