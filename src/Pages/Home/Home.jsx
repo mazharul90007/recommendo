@@ -16,7 +16,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className="w-2/3 mx-auto text-center my-5">
+            <div className="w-4/5 md:w-3/5 mx-auto text-center mt-24">
                 <h2 className="text-3xl font-semibold text-green-600 text-center mb-3">Experience the Power of Smart Recommendations</h2>
                 <p className=" text-gray-500 font-medium">Get personalized suggestions based on your preferences and needs. Make confident choices with tailored insights that help you find the best products effortlessly.</p>
             </div>
@@ -40,7 +40,7 @@ const Home = () => {
                                                 alt="Shoes" />
                                         </figure>
                                         <div className="card-body flex flex-col">
-                                            <h2 className="card-title">{query.queryTitle}</h2>
+                                            <h2 className="text-lg font-semibold">{query.queryTitle}</h2>
                                             <div className="flex justify-between items-center">
                                                 <img
                                                     src={query.authorImg}

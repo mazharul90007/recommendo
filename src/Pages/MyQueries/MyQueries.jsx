@@ -15,12 +15,6 @@ const MyQueries = () => {
 
 
     useEffect(() => {
-        // axios.get(`https://recommendo-server.vercel.app/queries?authorEmail=${user.email}`)
-        //     .then(res => {
-        //         const data = res.data;
-        //         setMyQueries(data);
-        //         // console.log(data);
-        //     })
         axiosSecure.get(`/queries?authorEmail=${user.email}`)
             .then(res => {
                 const data = res.data;
@@ -56,7 +50,7 @@ const MyQueries = () => {
         })
     }
     return (
-        <div className="w-11/12 mx-auto mb-12">
+        <div className="w-11/12 mx-auto">
             <div className="hero bg-gradient-to-r from-green-600 to-green-700 text-white py-5 mb-5 rounded-lg">
                 <div className="hero-content text-center">
                     <div className="max-w-2xl">

@@ -18,7 +18,7 @@ const Queries = () => {
     const [columns, setColumns] = useState(3);
 
     return (
-        <div className="w-11/12 mx-auto mb-12">
+        <div className="w-11/12 mx-auto">
             <div className="mb-6">
                 <img className="rounded-xl" src={query} alt="" />
             </div>
