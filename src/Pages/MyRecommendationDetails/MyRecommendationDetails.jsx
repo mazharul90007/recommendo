@@ -8,7 +8,7 @@ const MyRecommendationDetails = () => {
         <div className="w-11/12 mx-auto my-12">
             <div className="grid md:grid-cols-2 gap-4">
                 <div className="md:grid-cols-1 border border-green-300 p-4">
-                    <div className="card bg-base-100 w-full">
+                    <div className="card bg-base-100 w-full h-full">
                         <h2 className="text-2xl font-semibold text-center my-3">User Query</h2>
 
                         <figure className="">
