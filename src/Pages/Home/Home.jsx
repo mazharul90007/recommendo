@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { IoPerson, IoTime } from "react-icons/io5";
 import HowItWorks from "../../Components/HowItWorks/HowItWorks";
 import Testimonials from "../../Components/Testimonials/Testimonials";
+import TopRecommended from "../../Components/TopRecommended/TopRecommended";
 
 
 const Home = () => {
@@ -16,11 +17,11 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className="w-4/5 md:w-3/5 mx-auto text-center mt-12">
+            <div className="w-4/5 md:w-3/5 mx-auto text-center">
                 <h2 className="text-3xl font-semibold text-green-600 text-center mb-3">Experience the Power of Smart Recommendations</h2>
                 <p className=" text-gray-500 font-medium">Get personalized suggestions based on your preferences and needs. Make confident choices with tailored insights that help you find the best products effortlessly.</p>
             </div>
-            <div className="w-11/12 mx-auto my-12">
+            <div className="w-11/12 mx-auto my-12 mb-24">
                 <div>
                     {sortedQueries.length === 0
                         ?
@@ -70,6 +71,7 @@ const Home = () => {
                     </Link>
                 </div>
             </div>
+            <TopRecommended></TopRecommended>
             <HowItWorks></HowItWorks>
             <Testimonials></Testimonials>
         </div>

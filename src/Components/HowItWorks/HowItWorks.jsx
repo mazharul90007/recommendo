@@ -5,13 +5,13 @@ import setting from '../../../public/setting.json'
 
 const HowItWorks = () => {
     return (
-        <div className="w-11/12 mx-auto mb-16">
+        <div className="w-11/12 mx-auto mb-24">
             <div className="mb-8">
                 <h2 className="text-4xl font-semibold text-green-700 text-center">How Recommendo Works</h2>
                 <p className='text-center text-xl text-gray-500 italic'>Discover, Compare, and Decide – Everything You Need, All in One Place</p>
             </div>
 
-            <section className=" mb-6 grid grid-cols-12" id="how-it-works">
+            <section className=" grid grid-cols-12" id="how-it-works">
                 <div className="col-span-4">
                     <div className="w-80 h-80">
                         <Lottie animationData={setting}></Lottie>
