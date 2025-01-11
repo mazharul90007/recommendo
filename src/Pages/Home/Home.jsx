@@ -31,34 +31,37 @@ const Home = () => {
                             <p>Sorry: No Queries Avaialable</p>
                         </div>
                         :
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             {
-                                sortedQueries.slice(0, 6).map(query =>
+                                sortedQueries.slice(0, 8).map(query =>
                                     <div
                                         key={query._id}
-                                        className="card card-compact bg-base-100 shadow-md">
-                                        <figure>
-                                            <img
-                                                src={query.imageURL}
-                                                alt="Shoes" />
-                                        </figure>
-                                        <div className="card-body flex flex-col">
+                                        className="rounded shadow bg-green-50 p-4 flex flex-col flex-grow border border-green-200">
+                                        <div>
+                                            <figure>
+                                                <img
+                                                    src={query.imageURL}
+                                                    alt="Shoes" />
+                                            </figure>
                                             <h2 className="text-lg font-semibold">{query.queryTitle}</h2>
-                                            <div className="flex justify-between items-center">
+                                        </div>
+                                        <div className=" flex flex-col mt-auto">
+                                            
+                                            <div className="flex flex-col justify-between items-start mb-2">
                                                 <img
                                                     src={query.authorImg}
                                                     className="w-12 h-12 rounded-full border border-gray-200 p-1"
                                                     alt="Author Image" />
-                                                <div>
+                                                <div className="text-sm font-medium text-gray-500">
                                                     <p className="flex items-center gap-2"><IoPerson /> {query.authorName}</p>
                                                     <p className="flex items-center gap-2"><IoTime /> {new Date(query.postedTime).toLocaleString()}</p>
                                                 </div>
                                             </div>
 
-                                            <div className="card-actions flex items-center justify-between mt-auto">
-                                                <button className="">Reccommend Count: {query.recommendationCount ? query.recommendationCount : '0'} </button>
+                                            <div className="card-actions flex items-center justify-between">
+                                                <button className="text-sm font-medium text-gray-500">Reccommend Count: {query.recommendationCount ? query.recommendationCount : '0'} </button>
                                                 <Link to={`/queryDetails/${query._id}`}>
-                                                    <button className=" py-2 px-3 border border-green-100 rounded-lg shadow text-green-700">Recommend</button>
+                                                    <button className=" py-1 px-2 border border-amber-500 bg-green-100 hover:bg-green-200 rounded-lg shadow text-amber-800 hover:scale-95 transition-transform transform">Recommend</button>
                                                 </Link>
                                             </div>
                                         </div>
