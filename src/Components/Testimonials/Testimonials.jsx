@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import '@smastrom/react-rating/style.css'
 import { Rating } from '@smastrom/react-rating';
+import { FaRegStar } from 'react-icons/fa';
 
 const Testimonials = () => {
     const [authors, setAuthors] = useState([]);
@@ -19,7 +20,8 @@ const Testimonials = () => {
                 <div className="w-11/12 mx-auto text-center">
                     <div className='mb-24'>
                         <h2 className="text-4xl font-semibold text-green-700">What Our Users Say</h2>
-                        <p className='text-xl text-gray-500 italic'>Hear from our satisfied users who trust us with their choices!</p>
+                        <p className='text-gray-500 italic'>Hear from our satisfied users who trust us with their choices!</p>
+                        <div className="divider w-9/12 mx-auto text-4xl text-gray-300"><FaRegStar /></div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-24 md:gap-8">
                         {
