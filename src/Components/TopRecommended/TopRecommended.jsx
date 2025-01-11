@@ -7,7 +7,7 @@ const TopRecommended = () => {
     const [topRatedQueries, setTopRatedQueries] = useState([])
 
     useEffect(()=>{
-        axios.get('http://localhost:3000/queries')
+        axios.get('https://recommendo-server.vercel.app/queries')
         .then(res =>{
             const data = res.data;
             // console.log(data)

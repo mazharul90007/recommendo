@@ -34,11 +34,11 @@ const MyQueries = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/recommendation/${id}`)
+                axios.delete(`https://recommendo-server.vercel.app/recommendation/${id}`)
                     .then(res => {
                         console.log(res.data);
 
-                        axios.delete(`http://localhost:3000/queries/${id}`)
+                        axios.delete(`https://recommendo-server.vercel.app/queries/${id}`)
 
                         const remaining = myQueries.filter(myQuery => myQuery._id !== id);
                         setMyQueries(remaining);
