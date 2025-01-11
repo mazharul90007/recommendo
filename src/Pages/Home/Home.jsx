@@ -66,7 +66,7 @@ const Home = () => {
                 </div>
                 <div className="text-center my-5">
                     <Link to={'/queries'}>
-                        <button className="py-2 px-3 border border-green-500 rounded-lg font-semibold shadow hover:bg-green-100">View All</button>
+                        <button className="py-2 px-3 text-amber-700 bg-green-100 border border-amber-500 rounded-lg font-semibold shadow hover:bg-green-200 hover:scale-95 transition-transform transform">View All</button>
                     </Link>
                 </div>
             </div>

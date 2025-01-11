@@ -1,14 +1,26 @@
+import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
+import setting from '../../../public/setting.json'
 
 
 const HowItWorks = () => {
     return (
-        <div className="w-11/12 mx-auto">
-            <section className="pb-16" id="how-it-works">
-                <div className="max-w-7xl mx-auto text-center">
-                    <h2 className="text-4xl font-semibold text-green-700 mb-8">How Recommendo Works</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-                        <div className="flex flex-col items-center bg-green-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div className="w-11/12 mx-auto mb-16">
+            <div className="mb-8">
+                <h2 className="text-4xl font-semibold text-green-700 text-center">How Recommendo Works</h2>
+                <p className='text-center text-xl text-gray-500 italic'>Discover, Compare, and Decide – Everything You Need, All in One Place</p>
+            </div>
+
+            <section className=" mb-6 grid grid-cols-12" id="how-it-works">
+                <div className="col-span-4">
+                    <div className="w-80 h-80">
+                        <Lottie animationData={setting}></Lottie>
+                    </div>
+                </div>
+                <div className="max-w-7xl mx-auto text-center col-span-8">
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div className="flex flex-col items-center bg-green-50 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <div className="text-4xl text-blue-500 mb-4">
                                 <i className="fas fa-search"></i>
                             </div>
@@ -28,7 +40,7 @@ const HowItWorks = () => {
                             </p>
                         </div>
 
-                        <div className="flex flex-col items-center bg-green-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div className="flex flex-col items-center bg-green-50 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <div className="text-4xl text-red-500 mb-4">
                                 <i className="fas fa-shopping-cart"></i>
                             </div>
@@ -38,14 +50,14 @@ const HowItWorks = () => {
                             </p>
                         </div>
                     </div>
-
-                    <div className="mt-8">
-                        <Link to={'/addQueries'}>
-                            <button className="btn btn-primary">Start Your Query Now</button>
-                        </Link>
-                    </div>
                 </div>
+
             </section>
+            <div className="flex justify-center">
+                <Link to={'/addQueries'}>
+                    <button className="py-2 px-3 text-amber-700 bg-green-100 border border-amber-500 rounded-lg font-semibold shadow hover:bg-green-200 hover:scale-95 transition-transform transform">Start Your Query Now</button>
+                </Link>
+            </div>
         </div>
     );
 };
