@@ -38,10 +38,11 @@ const Home = () => {
                                         key={query._id}
                                         className="rounded shadow bg-green-50 p-4 flex flex-col flex-grow border border-green-200">
                                         <div>
-                                            <figure>
+                                            <figure className="flex justify-center">
                                                 <img
                                                     src={query.imageURL}
-                                                    alt="Shoes" />
+                                                    alt="Shoes"
+                                                    className="rounded" />
                                             </figure>
                                             <h2 className="text-lg font-semibold">{query.queryTitle}</h2>
                                         </div>
