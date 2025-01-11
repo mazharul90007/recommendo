@@ -57,7 +57,7 @@ const HowItWorks = () => {
             </section>
             <div className="flex justify-center">
                 <Link to={'/addQueries'}>
-                    <button className="py-2 px-3 text-amber-700 bg-green-100 border border-amber-500 rounded-lg font-semibold shadow hover:bg-green-200 hover:scale-95 transition-transform transform">Start Your Query Now</button>
+                    <button className="py-2 px-3 mt-3 text-amber-700 bg-green-100 border border-amber-500 rounded-lg font-semibold shadow hover:bg-green-200 hover:scale-95 transition-transform transform">Start Your Query Now</button>
                 </Link>
             </div>
         </div>

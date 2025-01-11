@@ -61,7 +61,7 @@ const Navbar = () => {
                     <Link to={'/'}>
                         <div className="flex items-center">
                             <img className="h-8 w-8" src={icon} alt="" />
-                            <p className="text-2xl text-amber-700 font-bold">ecommendo</p>
+                            <p className="text-2xl text-amber-700 font-bold hidden md:block">ecommendo</p>
                         </div>
                         {/* <button className="btn btn-ghost text-2xl">Recommendo</button> */}
                     </Link>
