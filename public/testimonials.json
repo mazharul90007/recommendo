@@ -1,0 +1,24 @@
+[
+    {
+      "image": "https://i.ibb.co.com/jVbnMKk/jhon-doe.jpg",
+      "name": "John Doe",
+      "occupation": "Software Engineer",
+      "review": "Recommendo helped me find the perfect headphones! The recommendations were spot on and saved me so much time.",
+      "rating": 4
+    },
+    {
+      "image": "https://i.ibb.co.com/h75PbKn/jane-smith.jpg",
+      "name": "Jane Smith",
+      "occupation": "Graphic Designer",
+      "review": "I was unsure about which laptop to buy, but after using Recommendo, I got the best deal. Highly recommend it!",
+      "rating": 5
+    },
+    {
+      "image": "https://i.ibb.co.com/GWKcMFF/sara-lee.jpg",
+      "name": "Sara Lee",
+      "occupation": "Digital Marketer",
+      "review": "I love how easy it is to get personalized suggestions. Recommendo makes shopping so much more convenient!",
+      "rating": 4
+    }
+  ]
+  
