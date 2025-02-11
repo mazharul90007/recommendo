@@ -23,7 +23,7 @@ const Home = () => {
                 <p className=" text-gray-500 italic font-medium">Get personalized suggestions based on your preferences and needs. Make confident choices with tailored insights that help you find the best products effortlessly.</p>
                 <div className="divider text-4xl text-gray-300"><FaRegStar /></div>
             </div>
-            <div className="w-11/12 mx-auto my-12 mb-24">
+            <div className="w-11/12 mx-auto my-12 mb-16">
                 <div>
                     {sortedQueries.length === 0
                         ?

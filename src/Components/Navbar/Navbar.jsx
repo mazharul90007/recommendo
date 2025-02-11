@@ -82,9 +82,9 @@ const Navbar = () => {
                             <button onClick={handleLogOut} className="btn bg-amber-50 border border-amber-600">LogOut</button>
                         </div>
                             :
-                            <div className="flex gap-4 items-center">
-                                <Link to={'/registration'}><button className="underline">Register</button></Link>
-                                <Link to={'/signin'}><button className="btn btn-sm text-white btn-primary">Sign in</button></Link>
+                            <div className="flex gap-2 items-center">
+                                <Link to={'/registration'}><button className=" text-sm font-medium py-1 px-2 border border-amber-500 bg-green-100 hover:bg-green-200 rounded-lg shadow text-amber-800 hover:scale-95 transition-transform transform">Register</button></Link>
+                                <Link to={'/signin'}><button className=" text-sm font-medium py-1 px-2 border border-amber-500 bg-green-100 hover:bg-green-200 rounded-lg shadow text-amber-800 hover:scale-95 transition-transform transform">Sign in</button></Link>
                             </div>
                     }
 

@@ -17,7 +17,7 @@ const TopRecommended = () => {
         })
     },[])
     return (
-        <div className="w-11/12 mx-auto mb-24">
+        <div className="w-11/12 mx-auto mb-16">
             <div className="mb-8">
                 <h2 className="text-4xl font-semibold text-green-700 text-center">Top Recommended Products</h2>
                 <p className='text-center text-gray-500 italic'>Discover the best products loved by our users and experts.</p>
