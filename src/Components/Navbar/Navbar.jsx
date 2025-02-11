@@ -82,7 +82,7 @@ const Navbar = () => {
                             :
                             <div className="flex gap-4 items-center">
                                 <Link to={'/registration'}><button className="underline">Register</button></Link>
-                                <Link to={'/signin'}><button className="btn btn-primary">Sign in</button></Link>
+                                <Link to={'/signin'}><button className="btn btn-sm text-white btn-primary">Sign in</button></Link>
                             </div>
                     }
 
