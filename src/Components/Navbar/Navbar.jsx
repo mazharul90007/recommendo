@@ -91,7 +91,7 @@ const Navbar = () => {
                     }
 
                     <div>
-                        <button onClick={()=> setDayTheme(!dayTheme)} className={`text-2xl border-2 p-2 rounded-full shadow hover:scale-110 transition-transform transform ${dayTheme? 'bg-white' : 'text-white bg-black'}`}>
+                        <button onClick={()=> setDayTheme(!dayTheme)} className={`text-xl border-2 p-2 rounded-full shadow hover:scale-110 transition-transform transform ${dayTheme? 'bg-white' : 'text-white bg-black'}`}>
                            {dayTheme? <FaMoon className="text-black"/> : <FaSun />}
                         </button>
                     </div>
