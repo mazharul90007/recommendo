@@ -13,6 +13,7 @@ const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [dayTheme, setDayTheme] = useState(true);
     // console.log(user);
 
     const createUser = (email, password) => {
@@ -77,7 +78,9 @@ const AuthProvider = ({ children }) => {
         updateUser,
         logout,
         googleSignUp,
-        setUser
+        setUser,
+        dayTheme,
+        setDayTheme
 
 
 

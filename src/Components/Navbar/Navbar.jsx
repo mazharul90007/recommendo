@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
 import icon from '../../assets/recommendoLogo.png'
+import { FaMoon, FaSun } from "react-icons/fa";
 
 
 const Navbar = () => {
 
-    const { user, logout, setUser } = useContext(authContext);
+    const { user, logout, setUser, dayTheme, setDayTheme } = useContext(authContext);
     const handleLogOut = () => {
         logout()
             .then(() => {
@@ -73,7 +74,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <div className="navbar-end ">
+                <div className="navbar-end flex items-center gap-3">
                     {
                         user ? <div className="flex gap-4 items-center">
                             <img src={user.photoURL}
@@ -87,6 +88,12 @@ const Navbar = () => {
                                 <Link to={'/signin'}><button className=" text-sm font-medium py-1 px-2 border border-amber-500 bg-green-100 hover:bg-green-200 rounded-lg shadow text-amber-800 hover:scale-95 transition-transform transform">Sign in</button></Link>
                             </div>
                     }
+
+                    <div>
+                        <button onClick={()=> setDayTheme(!dayTheme)} className={`text-2xl border-2 p-2 rounded-full shadow hover:scale-110 transition-transform transform ${dayTheme? 'bg-white' : 'text-white bg-black'}`}>
+                           {dayTheme? <FaMoon className="text-black"/> : <FaSun />}
+                        </button>
+                    </div>
 
                 </div>
             </div>
