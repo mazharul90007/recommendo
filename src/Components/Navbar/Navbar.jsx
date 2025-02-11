@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
 import icon from '../../assets/recommendoLogo.png'
 import { FaMoon, FaSun } from "react-icons/fa";
+import { IoMdLogOut } from "react-icons/io";
 
 
 const Navbar = () => {
@@ -80,12 +81,12 @@ const Navbar = () => {
                             <img src={user.photoURL}
                                 className="w-12 h-12 p-1 border-2 border-red-500 shadow-lg rounded-full"
                                 alt="" />
-                            <button onClick={handleLogOut} className="btn bg-amber-50 border border-amber-600">LogOut</button>
+                            <button onClick={handleLogOut} className="text-5xl text-amber-600"><IoMdLogOut /></button>
                         </div>
                             :
                             <div className="flex gap-2 items-center">
-                                <Link to={'/registration'}><button className=" text-sm font-medium py-1 px-2 border border-amber-500 bg-green-100 hover:bg-green-200 rounded-lg shadow text-amber-800 hover:scale-95 transition-transform transform">Register</button></Link>
-                                <Link to={'/signin'}><button className=" text-sm font-medium py-1 px-2 border border-amber-500 bg-green-100 hover:bg-green-200 rounded-lg shadow text-amber-800 hover:scale-95 transition-transform transform">Sign in</button></Link>
+                                <Link to={'/registration'}><button className=" text-sm font-medium py-1 px-2 border border-amber-500 bg-green-100 hover:bg-green-200 rounded-lg shadow text-amber-800 hover:scale-95 transition-transform transform">SignUp</button></Link>
+                                <Link to={'/signin'}><button className=" text-sm font-medium py-1 px-2 border border-amber-500 bg-green-100 hover:bg-green-200 rounded-lg shadow text-amber-800 hover:scale-95 transition-transform transform">SignIn</button></Link>
                             </div>
                     }
 
