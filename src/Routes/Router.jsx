@@ -14,6 +14,7 @@ import RecommendationForMeDetails from "../Pages/RecommendationForMeDetails/Reco
 import MyRecommendation from "../Pages/MyRecommendation/MyRecommendation";
 import MyRecommendationDetails from "../Pages/MyRecommendationDetails/MyRecommendationDetails";
 import UpdateQuery from "../Pages/UpdateQuery/UpdateQuery";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: '/registration',
         element: <Registration></Registration>
+      },
+      {
+        path: '/contactUs',
+        element: <ContactUs></ContactUs>
       },
       {
         path: '/recommendationForMe',

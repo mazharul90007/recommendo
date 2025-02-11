@@ -4,7 +4,7 @@ import logo from '../../assets/Recommendo2.png'
 const Footer = () => {
     return (
         <div>
-            <footer className="bg-[#0a1435] text-gray-400 py-10">
+            <footer className="bg-[#0a1435] text-gray-400 py-10" id="footer">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {/* Brand Info */}
