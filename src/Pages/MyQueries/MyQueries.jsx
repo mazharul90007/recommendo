@@ -50,8 +50,8 @@ const MyQueries = () => {
         })
     }
     return (
-        <div className="w-11/12 mx-auto">
-            <div className="hero bg-gradient-to-r from-green-600 to-green-700 text-white py-5 mb-5 rounded-lg">
+        <div className="">
+            <div className="hero bg-gradient-to-r from-green-600 to-green-700 text-white py-16 mb-10">
                 <div className="hero-content text-center">
                     <div className="max-w-2xl">
                         <h1 className="text-5xl font-bold mb-6">
@@ -71,7 +71,7 @@ const MyQueries = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="w-11/12 mx-auto">
                 {
                     myQueries.length === 0
                         ?

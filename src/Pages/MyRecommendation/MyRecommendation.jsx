@@ -8,7 +8,7 @@ import nodata from '../../assets/noData.png'
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const MyRecommendation = () => {
-    const { user } = useAuth();
+    const { user, dayTheme } = useAuth();
     const [recommendations, setRecommendations] = useState([]);
     const axiosSecure = useAxiosSecure();
 
@@ -56,7 +56,7 @@ const MyRecommendation = () => {
 
     }
     return (
-        <div className="w-11/12 mx-auto mb-16">
+        <div className={`w-11/12 mx-auto mb-16 ${dayTheme? '' : 'bg-gray-300'}`}>
             <div>
                 {
                     recommendations.length === 0

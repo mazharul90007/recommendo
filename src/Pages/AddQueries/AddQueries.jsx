@@ -48,7 +48,7 @@ const AddQueries = () => {
     };
 
     return (
-        <div className=" py-5 bg-gray-100 flex justify-center items-center">
+        <div className=" py-5  flex justify-center items-center">
             <div className="card w-full max-w-3xl bg-white shadow-md rounded-lg p-6">
                 <h1 className="text-3xl font-bold text-center text-green-600 mb-6">
                     Add Your Query

@@ -7,7 +7,7 @@ const RecommendationForMeDetails = () => {
     const recommendation = useLoaderData();
     // console.log(recommendation);
     return (
-        <div className="w-11/12 mx-auto my-12">
+        <div className="w-11/12 mx-auto py-8 md:py-16">
             <div className="grid md:grid-cols-2 gap-4">
                 <div className="md:grid-cols-1 border border-green-300 p-4">
                     <div className="card bg-base-100 w-full h-full">
