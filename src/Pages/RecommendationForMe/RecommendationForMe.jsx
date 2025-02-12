@@ -20,7 +20,7 @@ const RecommendationForMe = () => {
 
     return (
         <div className="py-16">
-            <div className={`w-11/12 mx-auto mb-16 rounded-lg ${dayTheme ? '' : 'bg-gray-300'}`}>
+            <div className={`w-11/12 mx-auto rounded-lg ${dayTheme ? '' : 'bg-gray-300'}`}>
                 <div>
                     {
                         recommendations.length === 0
