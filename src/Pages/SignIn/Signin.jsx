@@ -9,45 +9,36 @@ import { authContext } from "../../Provider/AuthProvider";
 const Signin = () => {
 
     const { googleSignUp, login } = useContext(authContext);
-
-    const handleGoogleSignUp = ()=>{
-        googleSignUp()
-        .then(() =>{
-            // console.log(result)
-        })
-        .catch(() =>{
-            // console.log(error)
-        })
-    }
-
     const location = useLocation();
     const navigate = useNavigate();
     // console.log('sign in page', location)
-    const from = location.state || '/';
+    const from = location.state?.from?.pathname || "/";
 
-    const handleLogin = (e)=>{
+    const handleGoogleSignUp = () => {
+        googleSignUp()
+            .then((result) => {
+                console.log("Google Sign-In Success", result.user)
+                navigate(from, {replace: true});
+            })
+            .catch(() => {
+                // console.log(error)
+            })
+    }
+
+    const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
 
-        // const user = {email, password}
-        // console.log(user);
-
         login(email, password)
-        .then(()=>{
-            // console.log('sign in', result.user.email)
-            // const user = {email: email}
-            // axios.post('https://recommendo-server.vercel.app/jwt', user, {withCredentials: true})
-            // .then(res =>{
-            //     const data = res.data
-            //     console.log(data)
-            // })
-            navigate(from)
-        })
-        .catch(() =>{
-            // console.log(error);
-        })
+            .then(() => {
+                
+                navigate(from)
+            })
+            .catch(() => {
+                // console.log(error);
+            })
 
     }
 
@@ -79,7 +70,7 @@ const Signin = () => {
                             <span className="label-text">Username or Email address *</span>
                         </label>
                         <input
-                            type="text"
+                            type="email"
                             name="email"
                             placeholder="Your Email"
                             className="input input-bordered w-full"
