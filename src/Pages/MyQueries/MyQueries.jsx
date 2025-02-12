@@ -62,7 +62,7 @@ const MyQueries = () => {
                         </p>
                         <Link to={'/addQueries'}>
                             <button
-                                className="btn btn-success px-8 py-3 text-lg text-white font-semibold border border-green-600 transition-all duration-300 shadow-md"
+                                className=" btn py-1 px-3 font-semibold border border-amber-500 bg-green-100 hover:bg-green-200 rounded-lg shadow text-amber-800 hover:scale-95 transition-transform transform"
                             >
                                 Add Queries
                             </button>
@@ -85,7 +85,7 @@ const MyQueries = () => {
                                 myQueries.map(query =>
                                     <div
                                         key={query._id}
-                                        className="card card-compact bg-base-100 shadow">
+                                        className="p-4 bg-green-50 border border-green-200 card card-compact shadow">
                                         <figure>
                                             <img
                                                 src={query.imageURL}
